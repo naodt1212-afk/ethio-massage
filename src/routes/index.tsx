@@ -135,18 +135,13 @@ function Index() {
           <button aria-label="Open menu" className="p-2 rounded-full hover:bg-muted transition">
             <Menu className="h-6 w-6 text-foreground" />
           </button>
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="Ethiomassage logo" width={44} height={44} className="h-11 w-11 object-contain" />
-            <div className="leading-tight">
-              <div className="font-display text-xl md:text-2xl font-bold">
-                <span className="text-primary">Ethio</span>
-                <span className="text-accent">massage</span>
-              </div>
-              <div className="text-[10px] md:text-xs text-muted-foreground tracking-wide">
-                Relax. Renew. Rejuvenate.
-              </div>
-            </div>
-          </div>
+          <img
+            src={logo}
+            alt="Ethiomassage — Relax. Renew. Rejuvenate."
+            width={1536}
+            height={512}
+            className="h-12 md:h-14 w-auto object-contain"
+          />
           <a href={TEL_HREF} aria-label="Call us" className="h-11 w-11 rounded-full bg-primary text-primary-foreground grid place-items-center shadow-soft hover:scale-105 transition">
             <Phone className="h-5 w-5" />
           </a>
