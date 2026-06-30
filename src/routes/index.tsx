@@ -179,9 +179,9 @@ function Index() {
                 </a>
               </div>
             </div>
-            <div className="relative h-72 md:h-auto">
-              <img src={heroImg} alt="Professional massage therapist at work" width={1024} height={1280} className="absolute inset-0 h-full w-full object-cover" />
-              <div className="md:hidden absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent" />
+            <div className="relative h-72 md:h-auto md:min-h-[420px]">
+              <HeroCarousel />
+              <div className="md:hidden absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
             </div>
           </div>
           <svg viewBox="0 0 600 60" className="block w-full" preserveAspectRatio="none" aria-hidden>
