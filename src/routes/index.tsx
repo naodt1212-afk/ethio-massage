@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Menu, Phone, ArrowRight, Flower2, Activity, Footprints, Home, Building2,
   TreePine, UserRound, Car, Clock, ShieldCheck, CreditCard, MapPin,
   Star, MessageCircle, CalendarDays, HandHeart, Sparkles, Send, X,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 import logo from "@/assets/logo-ethiomassage.png";
-import heroImg from "@/assets/hero-therapist.jpg";
+import hero1 from "@/assets/hero-1.png";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.png";
 import indoorImg from "@/assets/indoor-room.jpg";
 import outdoorImg from "@/assets/outdoor-gazebo.jpg";
 import saraImg from "@/assets/therapist-sara.jpg";
