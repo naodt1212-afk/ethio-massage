@@ -110,6 +110,74 @@ function HeroCarousel() {
   );
 }
 
+const testimonials = [
+  { name: "Elena Rostova", country: "Germany", flag: "🇩🇪", rating: "5.0", review: "Absolutely world-class service! The therapist arrived right on time at my hotel in Addis Ababa. Truly one of the best deep tissue massages I have ever had. Highly professional and deeply relaxing." },
+  { name: "Thomas Dubois", country: "France", flag: "🇫🇷", rating: "4.9", review: "Incredibly convenient and professional. Booking a premium massage straight to my room after a long business flight was a lifesaver. The attention to detail and technique was phenomenal." },
+  { name: "Sofia Bianchi", country: "Italy", flag: "🇮🇹", rating: "5.0", review: "An exceptional luxury spa experience right in the comfort of my space. The team brings an atmosphere of pure tranquility. The aromatherapy and Swedish massage techniques were absolutely perfect." },
+  { name: "David Johansson", country: "Sweden", flag: "🇸🇪", rating: "4.9", review: "Flawless service from start to finish! The therapist was highly skilled and completely respectful of my privacy. It felt like a 5-star resort spa experience brought directly to me." },
+  { name: "Emma Carrington", country: "United Kingdom", flag: "🇬🇧", rating: "5.0", review: "The quality of care and professionalism is unmatched. It's incredibly rare to find such high-end mobile spa talent. They truly understand hospitality and premium therapeutic techniques." },
+  { name: "Dawit Kebede", country: "Ethiopia", flag: "🇪🇹", rating: "5.0", review: "በጣም አስደናቂ እና ፕሮፌሽናል አገልግሎት ነው! ወደ ቤት መጥተው የሚሰጡት ሰርቪስ እጅግ ምቹ ከመሆኑም በላይ የተጠቀሙባቸው ማሳጆች በጣም አርኪ ነበሩ። ለምትፈልጉት ሰው ሁሉ በፍጹም እመክራለሁ።" },
+];
+
+function TestimonialsCarousel() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((p) => (p + 1) % testimonials.length), 5000);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div>
+      {/* Mobile: swipeable single card */}
+      <div className="md:hidden overflow-hidden">
+        <div className="flex transition-transform duration-700 ease-out" style={{ transform: `translateX(-${i * 100}%)` }}>
+          {testimonials.map((t) => (
+            <div key={t.name} className="min-w-full px-1">
+              <TestimonialCard t={t} />
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 flex justify-center gap-1.5">
+          {testimonials.map((_, idx) => (
+            <button key={idx} onClick={() => setI(idx)} aria-label={`Testimonial ${idx + 1}`} className={`h-1.5 rounded-full transition-all ${idx === i ? "w-6 bg-accent" : "w-1.5 bg-primary/20"}`} />
+          ))}
+        </div>
+      </div>
+      {/* Desktop: grid */}
+      <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
+        {testimonials.map((t) => (
+          <TestimonialCard key={t.name} t={t} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
+  return (
+    <article className="relative h-full bg-background rounded-3xl shadow-card border border-border/50 p-5 md:p-6 flex flex-col">
+      <Sparkles className="absolute top-4 right-4 h-5 w-5 text-accent/40" aria-hidden />
+      <div className="flex items-center gap-1 mb-3">
+        {[0,1,2,3,4].map((s) => (
+          <Star key={s} className="h-4 w-4 fill-accent text-accent" />
+        ))}
+        <span className="ml-1.5 text-xs font-medium text-muted-foreground">{t.rating}</span>
+      </div>
+      <p className="text-sm md:text-[15px] leading-relaxed text-foreground/85 flex-1">"{t.review}"</p>
+      <div className="mt-4 pt-4 border-t border-border/60 flex items-center gap-3">
+        <div className="h-10 w-10 rounded-full bg-cream grid place-items-center text-primary font-semibold font-display">
+          {t.name.charAt(0)}
+        </div>
+        <div className="min-w-0">
+          <p className="font-semibold text-sm text-foreground truncate">{t.name}</p>
+          <p className="text-xs text-muted-foreground flex items-center gap-1">
+            <span className="text-base leading-none">{t.flag}</span> {t.country}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function Leaves({ className = "" }: { className?: string }) {
   return <Sparkles className={`h-4 w-4 text-accent ${className}`} aria-hidden />;
 }
@@ -337,6 +405,16 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <section className="px-3 mt-8">
+        <div className="mx-auto max-w-5xl">
+          <SectionTitle>What Our Clients Say</SectionTitle>
+          <TestimonialsCarousel />
+        </div>
+      </section>
+
+
 
       {/* Floating contact buttons */}
       <div className="fixed bottom-24 right-4 z-50 flex flex-col gap-2 items-end">
