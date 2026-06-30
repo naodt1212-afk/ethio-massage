@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Menu, Phone, ArrowRight, Flower2, Activity, Footprints, Home, Building2,
   TreePine, UserRound, Car, Clock, ShieldCheck, CreditCard, MapPin,
   Star, MessageCircle, CalendarDays, HandHeart, Sparkles, Send, X,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 import logo from "@/assets/logo-ethiomassage.png";
-import heroImg from "@/assets/hero-therapist.jpg";
+import hero1 from "@/assets/hero-1.png";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.png";
 import indoorImg from "@/assets/indoor-room.jpg";
 import outdoorImg from "@/assets/outdoor-gazebo.jpg";
 import saraImg from "@/assets/therapist-sara.jpg";
@@ -54,6 +57,58 @@ const therapists = [
   { name: "Helen T.", img: helenImg },
   { name: "Liya A.", img: liyaImg },
 ];
+
+function HeroCarousel() {
+  const slides = [
+    { src: hero1, alt: "Outdoor garden massage session" },
+    { src: hero2, alt: "Indoor relaxation massage" },
+    { src: hero3, alt: "Luxury spa back massage" },
+  ];
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((p) => (p + 1) % slides.length), 2000);
+    return () => clearInterval(t);
+  }, [slides.length]);
+  const go = (n: number) => setI((n + slides.length) % slides.length);
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      {slides.map((s, idx) => (
+        <img
+          key={idx}
+          src={s.src}
+          alt={s.alt}
+          width={1408}
+          height={800}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out ${idx === i ? "opacity-100" : "opacity-0"}`}
+        />
+      ))}
+      <button
+        onClick={() => go(i - 1)}
+        aria-label="Previous slide"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-background/70 backdrop-blur grid place-items-center text-foreground hover:bg-background transition"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        onClick={() => go(i + 1)}
+        aria-label="Next slide"
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-background/70 backdrop-blur grid place-items-center text-foreground hover:bg-background transition"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setI(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-1.5 rounded-full transition-all ${idx === i ? "w-6 bg-accent" : "w-1.5 bg-white/70"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Leaves({ className = "" }: { className?: string }) {
   return <Sparkles className={`h-4 w-4 text-accent ${className}`} aria-hidden />;
@@ -176,9 +231,9 @@ function Index() {
                 </a>
               </div>
             </div>
-            <div className="relative h-72 md:h-auto">
-              <img src={heroImg} alt="Professional massage therapist at work" width={1024} height={1280} className="absolute inset-0 h-full w-full object-cover" />
-              <div className="md:hidden absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent" />
+            <div className="relative h-72 md:h-auto md:min-h-[420px]">
+              <HeroCarousel />
+              <div className="md:hidden absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
             </div>
           </div>
           <svg viewBox="0 0 600 60" className="block w-full" preserveAspectRatio="none" aria-hidden>
