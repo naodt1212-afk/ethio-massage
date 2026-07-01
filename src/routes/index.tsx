@@ -9,7 +9,7 @@ import {
 
 import logo from "@/assets/logo-ethiomassage.png";
 import hero1 from "@/assets/hero-1.png";
-import hero2 from "@/assets/hero-2.jpg";
+import hero2 from "@/assets/hero-2.png";
 import hero3 from "@/assets/hero-3.png";
 import indoorImg from "@/assets/indoor-room.jpg";
 import outdoorImg from "@/assets/outdoor-gazebo.jpg";
