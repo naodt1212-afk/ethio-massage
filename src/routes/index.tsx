@@ -325,7 +325,7 @@ function Index() {
           </div>
           <div className="mt-5 text-center">
             <button onClick={openBook} className="inline-flex items-center gap-1 text-primary font-medium text-sm hover:gap-2 transition-all">
-              See All Services <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </div>
@@ -382,7 +382,7 @@ function Index() {
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-display text-xl md:text-2xl font-semibold text-foreground">Our Therapists</h2>
             <button onClick={openBook} className="inline-flex items-center gap-1 text-primary text-sm font-medium hover:gap-2 transition-all">
-              View All <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </button>
           </div>
           <div className="grid grid-cols-3 gap-3">
