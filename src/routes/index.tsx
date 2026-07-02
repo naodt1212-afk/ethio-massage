@@ -38,7 +38,6 @@ const services = [
   { icon: HandHeart, name: "Swedish Massage" },
   { icon: Activity, name: "Deep Tissue Massage" },
   { icon: Flower2, name: "Relaxation Massage" },
-  { icon: Footprints, name: "Sports Massage" },
   { icon: Home, name: "Home Service" },
   { icon: Building2, name: "Hotel Service" },
 ];
@@ -315,9 +314,9 @@ function Index() {
       <section className="px-3 mt-6">
         <div className="mx-auto max-w-5xl bg-background rounded-3xl shadow-card p-5 md:p-8">
           <SectionTitle>Our Services</SectionTitle>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {services.map(({ icon: Icon, name }) => (
-              <button key={name} onClick={openBook} className="bg-background border border-border/60 rounded-2xl shadow-card p-3 flex flex-col items-center text-center hover:-translate-y-0.5 hover:shadow-soft transition">
+              <button key={name} onClick={openBook} className="basis-[calc(33.333%-0.5rem)] md:basis-[calc(20%-0.6rem)] bg-background border border-border/60 rounded-2xl shadow-card p-3 flex flex-col items-center text-center hover:-translate-y-0.5 hover:shadow-soft transition">
                 <Icon className="h-7 w-7 text-primary" strokeWidth={1.8} />
                 <p className="mt-2 text-[11px] md:text-sm font-medium text-foreground leading-tight">{name}</p>
               </button>
