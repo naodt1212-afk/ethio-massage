@@ -38,7 +38,6 @@ const services = [
   { icon: HandHeart, name: "Swedish Massage" },
   { icon: Activity, name: "Deep Tissue Massage" },
   { icon: Flower2, name: "Relaxation Massage" },
-  { icon: Footprints, name: "Sports Massage" },
   { icon: Home, name: "Home Service" },
   { icon: Building2, name: "Hotel Service" },
 ];
